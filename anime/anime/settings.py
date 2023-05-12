@@ -59,7 +59,7 @@ DOWNLOADER_MIDDLEWARES = {
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
     "anime.pipelines.ToInteger": 200,
-    #"anime.pipelines.AnimePipeline": 300,
+    "anime.pipelines.AnimePipeline": 300,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
