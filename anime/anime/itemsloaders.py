@@ -5,5 +5,9 @@ from scrapy.loader import ItemLoader
 class AnimeLoader(ItemLoader):
     default_output_processor = TakeFirst()
     tipo_in = MapCompose(lambda x: x.replace("\n", "").strip())
-    eps_in = MapCompose(lambda x: x.replace(" Eps,", "").replace(" Ep,", "").replace(",", "").strip())
+    eps_in = MapCompose(
+        lambda x: x.replace(" Eps,", "").replace(" Ep,", "").replace(",", "").strip()
+        if "?" not in x
+        else 0
+    )
     fechaEst_in = MapCompose(lambda x: x[-4:])

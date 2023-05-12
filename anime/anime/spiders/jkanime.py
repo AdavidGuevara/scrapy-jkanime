@@ -19,12 +19,13 @@ class JkanimeSpider(scrapy.Spider):
         offset = response.meta["offset"]
         animes = response.css("div.custom_item2")
         for anime in animes:
-            single_anime = AnimeLoader(AnimeItem(), anime)
-            single_anime.add_css("nombre", "h5.card-title a::text")
-            single_anime.add_css("tipo", "p.card-txt::text")
-            single_anime.add_css("eps", "p.ep::text")
-            single_anime.add_css("fechaEst", "small.text-muted::text")
-            yield single_anime.load_item()
+            if "Concluido" in anime.css("p.card-status::text").get():
+                single_anime = AnimeLoader(AnimeItem(), anime)
+                single_anime.add_css("nombre", "h5.card-title a::text")
+                single_anime.add_css("tipo", "p.card-txt::text")
+                single_anime.add_css("eps", "p.ep::text")
+                single_anime.add_css("fechaEst", "small.text-muted::text")
+                yield single_anime.load_item()
 
         next = response.xpath("//a[contains(@class, 'nav-next')]").get()
         if next:
