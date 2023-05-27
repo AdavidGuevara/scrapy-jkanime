@@ -1,3 +1,3 @@
-# Scrapy a jkanime.
+# Scraping to jkanime.
 
-- Se extrae 3259 datos y se guarda en una base de dato MySQL, este proseso duro aproximadamente 16 minutos.
+- 3259 data is extracted and saved in a MySQL database, this process lasted approximately 16 minutes.
